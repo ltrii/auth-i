@@ -6,7 +6,10 @@ module.exports = {
     client: 'sqlite3',
     connection: {
       filename: './data/auth.sqlite3'
-    }
+    },
+    migrations: {
+      directory: './data/migrations',
+    },
   }
 
 };
