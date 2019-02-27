@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Input, Button, FormGroup, Modal } from 'reactstrap';
 
-export default class RegisterForm extends Component {
+export default class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,13 +11,6 @@ export default class RegisterForm extends Component {
     }
 
     this.toggle = this.toggle.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({
-        curName: '',
-        curPassword: ''
-      })
   }
 
   handleChange = e => {
@@ -32,10 +25,8 @@ export default class RegisterForm extends Component {
       username: this.state.curName,
       password: this.state.curPassword
     }
-    this.props.registerUser(newUser);
+    this.props.loginUser(newUser);
     this.setState({
-      curName: '',
-      curPassword: '',
       modal: false
     })
   }
@@ -51,7 +42,7 @@ export default class RegisterForm extends Component {
   render() {
     return (
       <div className="addFriendDiv">
-        <Button color="primary" onClick={this.toggle}>Register</Button>
+        <Button color="primary" onClick={this.toggle}>Login</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
         <Form onSubmit={e => this.handleSubmit(e)}>
           <FormGroup>

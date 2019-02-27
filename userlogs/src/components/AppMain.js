@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
 
+import '../App.css';
+
+import { connect } from 'react-redux';
+import { registerUser, loginUser } from '../actions';
+import RegisterForm from './RegisterForm';
+import LoginForm from './LoginForm';
+
 class AppMain extends Component {
   constructor(props){
     super(props);
@@ -18,11 +25,19 @@ class AppMain extends Component {
   }
   render() {
     return (
-      <div>
-        It is what it is.
+      <div className='MainTest'>
+        <RegisterForm registerUser={this.props.registerUser} />
+        <LoginForm loginUser={this.props.loginUser} />
       </div>
     )
   }
 }
 
-export default AppMain;
+const mapStateToProps = state => {
+  return {
+    registerUser: state.userReducer.registerUser,
+    loginUser: state.userReducer.loginUser
+  };
+};
+
+export default connect(mapStateToProps, { registerUser, loginUser })(AppMain);
